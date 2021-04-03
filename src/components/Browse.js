@@ -19,7 +19,7 @@ function Browse() {
                             <h5 className="text-lg font-semibold">Living Room</h5>
                             <span className="">18.309 items</span>
                         </div>
-                        <a href="/" className="stretched-link"></a>
+                        <a href="/" className="stretched-link"/>
                     </div>
                     <div className="relative col-span-9 row-span-1 md:col-span-2 md:row-span-2 card">
                         <div className="card-shadow rounded-xl">
@@ -34,7 +34,7 @@ function Browse() {
                             <h5 className="text-lg font-semibold">Decoration</h5>
                             <span className="">77.392 items</span>
                         </div>
-                        <a href="/" className="stretched-link"></a>
+                        <a href="/" className="stretched-link"/>
                     </div>
                     <div className="relative col-span-9 row-span-1 md:col-span-3 md:row-span-2 card">
                         <div className="card-shadow rounded-xl">
@@ -49,7 +49,7 @@ function Browse() {
                             <h5 className="text-lg font-semibold">Living Room</h5>
                             <span className="">22.094 items</span>
                         </div>
-                        <a href="/" className="stretched-link"></a>
+                        <a href="/" className="stretched-link"/>
                     </div>
                     <div className="relative col-span-9 row-span-1 md:col-span-4 card">
                         <div className="card-shadow rounded-xl">
@@ -63,7 +63,7 @@ function Browse() {
                             <h5 className="text-lg font-semibold">Children Room</h5>
                             <span className="">837 items</span>
                         </div>
-                        <a href="/" className="stretched-link"></a>
+                        <a href="/" className="stretched-link"/>
                     </div>
                 </div>
             </div>
