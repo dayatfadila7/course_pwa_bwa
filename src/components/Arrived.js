@@ -206,7 +206,7 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
             <span className="">IDR 599.400</span>
-            <a href="/details.html" className="stretched-link"></a>
+            <a href="details.html" className="stretched-link"></a>
           </div>
           {/*<!-- END: JUST ARRIVED ROW 3 -->*/}
 
@@ -239,7 +239,7 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
             <span className="">IDR 599.400</span>
-            <a href="/details.html" className="stretched-link"></a>
+            <a href="details.html" className="stretched-link"></a>
           </div>
           {/*<!-- END: JUST ARRIVED ROW 1 -->*/}
         </div>
