@@ -43,7 +43,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Cangkir Mauttie</h5>
                         <span className="">IDR 89.300</span>
-                        <a href="/" className="stretched-link"/>
+                        <a href="/" className="stretched-link">&nbsp;</a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 1 -->*/}
 
@@ -78,7 +78,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Bankyu Minimay</h5>
                         <span className="">IDR 67.899</span>
-                        <a href="/" className="stretched-link"/>
+                        <a href="/" className="stretched-link">&nbsp;</a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 2 -->*/}
 
@@ -115,7 +115,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Buku Sidu Edition</h5>
                         <span className="">IDR 120.699</span>
-                        <a href="/" className="stretched-link"/>
+                        <a href="/" className="stretched-link"></a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 3 -->*/}
 
@@ -152,7 +152,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Watch Notes X</h5>
                         <span className="">IDR 1.973.000</span>
-                        <a href="/" className="stretched-link"/>
+                        <a href="/" className="stretched-link">&nbsp;</a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 4 -->*/}
 
@@ -189,7 +189,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
                         <span className="">IDR 599.400</span>
-                        <a href="/" className="stretched-link"/>
+                        <a href="/" className="stretched-link">&nbsp;</a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 5 -->*/}
 
@@ -226,7 +226,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
                         <span className="">IDR 599.400</span>
-                        <a href="/" className="stretched-link"/>
+                        <a href="/" className="stretched-link">&nbsp;</a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 3 -->*/}
 
@@ -263,7 +263,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
                         <span className="">IDR 599.400</span>
-                        <a href="/" className="stretched-link"/>
+                        <a href="/" className="stretched-link">&nbsp;</a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 1 -->*/}
                 </div>

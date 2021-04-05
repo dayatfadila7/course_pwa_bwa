@@ -11,7 +11,7 @@ import {clientsClaim} from 'workbox-core';
 import {ExpirationPlugin} from 'workbox-expiration';
 import {precacheAndRoute, createHandlerBoundToURL} from 'workbox-precaching';
 import {registerRoute} from 'workbox-routing';
-import {StaleWhileRevalidate} from 'workbox-strategies';
+import {NetworkFirst, StaleWhileRevalidate} from 'workbox-strategies';
 
 clientsClaim();
 
@@ -50,13 +50,29 @@ registerRoute(
 // precache, in this case same-origin like a .png requests like those from in public/
 registerRoute(
     // Add in any other file extensions or routing criteria as needed.
-    ({url}) => url.origin === self.location.origin && /.*\.(?:png|jpg|jpeg|svg|gif)/,
+    ({url}) => url.origin === self.location.origin && /.*\.(?:png|jpg|jpeg|svg|ico|gif)/,
     new StaleWhileRevalidate({
         cacheName: 'images',
         plugins: [
             // Ensure that once this runtime cache reaches a maximum size the
             // least-recently used images are removed.
             new ExpirationPlugin({maxEntries: 50}),
+        ],
+    })
+);
+
+// Add cdn font.
+registerRoute(
+    ({ url }) =>
+        url.origin === "https://fonts.googleapis.com" ||
+        url.origin === "https://fonts.gstatic.com",
+    new NetworkFirst({
+        cacheName: "google-fonts-stylesheets",
+        plugins: [
+            new ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+                maxEntries: 30,
+            }),
         ],
     })
 );
