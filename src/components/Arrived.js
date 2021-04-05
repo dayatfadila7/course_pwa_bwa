@@ -115,7 +115,7 @@ function Arrived() {
                         </div>
                         <h5 className="text-lg font-semibold mt-4">Buku Sidu Edition</h5>
                         <span className="">IDR 120.699</span>
-                        <a href="/" className="stretched-link"></a>
+                        <a href="/" className="stretched-link">&nbsp;</a>
                     </div>
                     {/*<!-- END: JUST ARRIVED ROW 3 -->*/}
 
