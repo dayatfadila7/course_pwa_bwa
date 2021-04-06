@@ -63,7 +63,7 @@ registerRoute(
 
 // Add cdn font.
 registerRoute(
-    ({ url }) =>
+    ({url}) =>
         url.origin === "https://fonts.googleapis.com" ||
         url.origin === "https://fonts.gstatic.com",
     new NetworkFirst({
@@ -79,9 +79,9 @@ registerRoute(
 
 self.addEventListener('install', function (event) {
     console.log("SW Install");
-    const  asyncInstall = new Promise(function (resolve){
+    const asyncInstall = new Promise(function (resolve) {
         console.log("Waiting install until finish");
-        setTimeout(resolve,5000);
+        setTimeout(resolve, 5000);
     })
     event.waitUntil(asyncInstall);
 });
@@ -99,3 +99,24 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+
+registerRoute(({url}) => url.origin.includes("qorebase.io"), new NetworkFirst({
+        cacheName: 'apiData',
+        plugins: [
+            new ExpirationPlugin({
+                maxAgeSeconds: 360,
+                maxEntries: 30
+            })
+        ]
+    })
+);
+
+registerRoute(({url}) => /.*\.(?:png|jpg|jpeg|svg|ico|gif)/,
+    new StaleWhileRevalidate({
+        cacheName: 'apiImages',
+        plugins: [
+            new ExpirationPlugin({maxEntries: 30}),
+        ],
+    })
+);
