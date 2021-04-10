@@ -11,16 +11,16 @@ function carousel_calc_offset(e) {
 
 function slide(wrapper, items) {
   let posX1 = 0,
-    posX2 = 0,
-    posInitial,
-    posFinal,
-    threshold = 100,
-    itemToShow = window.innerWidth < 767 ? 1 : 4,
-    slides = items.getElementsByClassName("card"),
-    slidesLength = slides.length,
-    slideSize = items.getElementsByClassName("card")[0].offsetWidth,
-    index = 0,
-    allowShift = true;
+      posX2 = 0,
+      posInitial,
+      posFinal,
+      threshold = 100,
+      itemToShow = window.innerWidth < 767 ? 1 : 4,
+      slides = items.getElementsByClassName("card"),
+      slidesLength = slides.length,
+      slideSize = items.getElementsByClassName("card")[0].offsetWidth,
+      index = 0,
+      allowShift = true;
 
   wrapper.classList.add("loaded");
 
@@ -115,7 +115,7 @@ function slide(wrapper, items) {
     } else if (index >= slidesLength - itemToShow) {
       // console.log(2);
       items.style.left =
-        -((slidesLength - itemToShow + isMobile) * slideSize) + "px";
+          -((slidesLength - itemToShow + isMobile) * slideSize) + "px";
       index = slidesLength - itemToShow;
     } else if (index == slidesLength || index == slidesLength - 1) {
       // console.log(3);

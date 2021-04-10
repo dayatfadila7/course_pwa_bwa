@@ -9,6 +9,7 @@ import Modal from "./components/Modal.js";
 import Footer from "./components/Footer.js";
 import Offline from "./components/Offline";
 
+
 function App() {
     const [showModal, setShowModal] = React.useState(false);
     const [items, setItems] = React.useState([]);
@@ -33,6 +34,7 @@ function App() {
             });
             const {nodes} = await response.json();
             setItems(nodes);
+
             const script = document.createElement("script");
             script.src = "/carousel.js";
             script.async = false;
