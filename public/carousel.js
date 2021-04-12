@@ -101,29 +101,31 @@ function slide(wrapper, items) {
     allowShift = false;
   }
 
-  function checkIndex() {
+  function checkIndex(event) {
     setTimeout(() => {
       items.classList.remove("transition-all");
       items.classList.remove("duration-200");
     }, 200);
     // console.log("index:", index);
     const isMobile = window.innerWidth < 767 ? 0 : -1;
-    if (index < 0) {
-      // console.log(1);
-      items.style.left = "0px";
-      index = 0;
-    } else if (index >= slidesLength - itemToShow) {
-      // console.log(2);
-      items.style.left =
-          -((slidesLength - itemToShow + isMobile) * slideSize) + "px";
-      index = slidesLength - itemToShow;
-    } else if (index == slidesLength || index == slidesLength - 1) {
-      // console.log(3);
-      items.style.left = slidesLength - 1 * slideSize + "px";
-      index = slidesLength - 1;
-    }
+    if (event.propertyName === "left") {
+      if (index < 0) {
+        // console.log(1);
+        items.style.left = "0px";
+        index = 0;
+      } else if (index >= slidesLength - itemToShow) {
+        console.log(2);
+        items.style.left =
+            -((slidesLength - itemToShow + isMobile) * slideSize) + "px";
+        index = slidesLength - itemToShow;
+      } else if (index == slidesLength || index == slidesLength - 1) {
+        // console.log(3);
+        items.style.left = slidesLength - 1 * slideSize + "px";
+        index = slidesLength - 1;
+      }
 
-    allowShift = true;
+      allowShift = true;
+    }
   }
 }
 
