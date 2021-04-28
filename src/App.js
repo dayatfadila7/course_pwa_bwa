@@ -1,4 +1,5 @@
 import React from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import Header from "./components/Header.js";
 import Hero from "./components/Hero.js";
@@ -8,12 +9,16 @@ import Clients from "./components/Clients.js";
 import Modal from "./components/Modal.js";
 import Footer from "./components/Footer.js";
 import Offline from "./components/Offline";
-
+import Splash from "./pages/Splash.js";
+import Profile from "./pages/Profile";
 
 function App() {
     const [showModal, setShowModal] = React.useState(false);
     const [items, setItems] = React.useState([]);
     const [offlineStatus, setOfflineStatus] = React.useState(!navigator.onLine);
+
+    const [isLoading, setIsLoading] = React.useState(true);
+
 
     function handleOfflineStatus() {
         setOfflineStatus(!navigator.onLine);
@@ -46,7 +51,11 @@ function App() {
         window.addEventListener("online", handleOfflineStatus);
         window.addEventListener("offline", handleOfflineStatus);
 
-        return function() {
+        setTimeout(function () {
+            setIsLoading(false);
+        }, 3000)
+
+        return function () {
             window.removeEventListener("online", handleOfflineStatus);
             window.removeEventListener("offline", handleOfflineStatus);
         };
@@ -54,16 +63,28 @@ function App() {
     }, [offlineStatus])
     return (
         <>
-            { offlineStatus && <Offline/>}
-            <Header/>
-            <Hero handleShowModal={handleShowModal}/>
-            <Browse/>
-            <Arrived items={items}/>
-            <Clients/>
-            <Footer/>
-            {showModal && <Modal handleShowModal={handleShowModal}/>}
+            {isLoading === true ? <Splash/> :
+                (<>
+                    {offlineStatus && <Offline/>}
+                    <Header/>
+                    <Hero handleShowModal={handleShowModal}/>
+                    <Browse/>
+                    <Arrived items={items}/>
+                    <Clients/>
+                    <Footer/>
+                    {showModal && <Modal handleShowModal={handleShowModal}/>}
+                </>)
+            }
         </>
+
     );
 }
 
-export default App;
+export default function Routes(){
+    return(
+        <Router>
+            <Route path="/" exact component={App}></Route>
+            <Route path="/profile" exact component={Profile}></Route>
+        </Router>
+    )
+};
