@@ -1,5 +1,34 @@
 import {Link} from "react-router-dom";
 
+function urlB64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+}
+
+async function subscribe() {
+    const key = "BHxd_proV3SsgZxiD05dsO0K2nFFPzNuf5kIMT8MgeaABywPVQALYwoquBC3hRcg4jH2xFwpBM9AJhk5eXkpduw";
+    try {
+        const sub = await global.registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlB64ToUint8Array(key),
+        });
+        console.log("Subscribed!");
+    } catch (error) {
+        console.error("Cannot subscribe.");
+    }
+}
+
+
 function Profile() {
     return (
         <>
@@ -8,37 +37,28 @@ function Profile() {
                     <div className="flex flex-stretch items-center">
                         <div className="w-56 items-center flex">
                             <Link to="/">
-                            <img
-                                src="images/content/logo.png"
-                                alt="Luxspace | Fulfill your house with beautiful furniture"
-                            />
+                                <img
+                                    src="images/content/logo.png"
+                                    alt="Luxspace | Fulfill your house with beautiful furniture"
+                                />
                             </Link>
                         </div>
                         <div className="w-full"></div>
                         <div className="w-auto">
                             <ul
                                 className="fixed bg-white inset-0 z-0 flex flex-col invisible items-center justify-center opacity-0 md:visible md:flex-row md:bg-transparent md:relative md:opacity-100 md:flex md:items-center"
-                                id="menu"
-                            >
+                                id="menu">
                                 <li className="mx-3 py-6 md:py-0">
-                                    <a href="/" className="text-black md:text-black hover:underline"
-                                    >Showcase</a
-                                    >
+                                    <a href="/" className="text-black md:text-black hover:underline">Showcase</a>
                                 </li>
                                 <li className="mx-3 py-6 md:py-0">
-                                    <a href="/" className="text-black md:text-black hover:underline"
-                                    >Catalog</a
-                                    >
+                                    <a href="/" className="text-black md:text-black hover:underline">Catalog</a>
                                 </li>
                                 <li className="mx-3 py-6 md:py-0">
-                                    <a href="/" className="text-black md:text-black hover:underline"
-                                    >Delivery</a
-                                    >
+                                    <a href="/" className="text-black md:text-black hover:underline">Delivery</a>
                                 </li>
                                 <li className="mx-3 py-6 md:py-0">
-                                    <a href="/" className="text-black md:text-black hover:underline"
-                                    >Rewards</a
-                                    >
+                                    <a href="/" className="text-black md:text-black hover:underline">Rewards</a>
                                 </li>
                             </ul>
                         </div>
@@ -47,14 +67,12 @@ function Profile() {
                                 <li className="ml-6 block md:hidden">
                                     <button
                                         id="menu-toggler"
-                                        className="relative flex z-50 items-center justify-center w-8 h-8 text-black md:text-black focus:outline-none"
-                                    >
+                                        className="relative flex z-50 items-center justify-center w-8 h-8 text-black md:text-black focus:outline-none">
                                         <svg
                                             className="fill-current"
                                             width="18"
                                             height="17"
-                                            viewBox="0 0 18 17"
-                                        >
+                                            viewBox="0 0 18 17">
                                             <path
                                                 d="M15.9773 0.461304H1.04219C0.466585 0.461304 0 0.790267 0 1.19609C0 1.60192 0.466668 1.93088 1.04219 1.93088H15.9773C16.5529 1.93088 17.0195 1.60192 17.0195 1.19609C17.0195 0.790208 16.5529 0.461304 15.9773 0.461304Z"
                                             />
@@ -71,16 +89,14 @@ function Profile() {
                                     <a
                                         id="header-cart"
                                         href="cart.html"
-                                        className="flex items-center justify-center w-8 h-8 text-black cart cart-filled"
-                                    >
+                                        className="flex items-center justify-center w-8 h-8 text-black cart cart-filled">
                                         <svg
                                             className="fill-current"
                                             width="29"
                                             height="25"
                                             viewBox="0 0 29 25"
                                             fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M10.8754 19.9824C9.61762 19.9824 8.59436 21.023 8.59436 22.3021C8.59436 23.5812 9.61762 24.6218 10.8754 24.6218C12.1331 24.6218 13.1564 23.5812 13.1564 22.3021C13.1563 21.023 12.1331 19.9824 10.8754 19.9824ZM10.8754 23.3265C10.3199 23.3265 9.86796 22.8669 9.86796 22.302C9.86796 21.7371 10.3199 21.2775 10.8754 21.2775C11.4308 21.2775 11.8828 21.7371 11.8828 22.302C11.8828 22.867 11.4308 23.3265 10.8754 23.3265Z"
                                             />
@@ -131,8 +147,7 @@ function Profile() {
                     <div className="flex flex-col items-center justify-center">
                         <div className="w-full md:w-4/12 text-center">
                             <div
-                                className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 mt-20"
-                            >
+                                className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 mt-20">
                                 <img
                                     src="./images/content/my-profile.png"
                                     alt="my-profile"
@@ -145,25 +160,13 @@ function Profile() {
                     </div>
                     <ul className="max-w-full md:max-w-lg mx-auto">
                         <li
-                            className="pb-3 mb-2 flex items-center justify-between w-full border-b border-gray-100"
-                        >
+                            className="pb-3 mb-2 flex items-center justify-between w-full border-b border-gray-100">
                             <span>Subscribe to Notification</span>
-                            <span>
-              <label
-                  htmlFor="subscribe"
-                  className="relative rounded-full bg-gray-200 w-12 h-7 block cursor-pointer"
-              >
-                <input
-                    id="subscribe"
-                    type="checkbox"
-                    className="appearance-none focus:outline-none absolute rounded-full w-5 h-5 bg-pink-400 transform -translate-y-1/2 top-1/2 left-1 checked:left-6 block transition-all duration-300 cursor-pointer"
-                />
-              </label>
-            </span>
+                            <button className="hover:underline appearance-none" onClick={subscribe}>Subscribe Now
+                            </button>
                         </li>
                         <li
-                            className="pb-3 mb-2 flex items-center justify-between w-full border-b border-gray-100"
-                        >
+                            className="pb-3 mb-2 flex items-center justify-between w-full border-b border-gray-100">
                             <span>Test Notification</span>
                             <button className="hover:underline appearance-none">Push Now</button>
                         </li>
@@ -171,8 +174,7 @@ function Profile() {
                     <div className="text-center mt-12">
                         <Link
                             to="/"
-                            className="text-gray-900 bg-red-200 focus:outline-none w-full py-3 rounded-full text-lg focus:text-black transition-all duration-200 px-8 cursor-pointer"
-                        >
+                            className="text-gray-900 bg-red-200 focus:outline-none w-full py-3 rounded-full text-lg focus:text-black transition-all duration-200 px-8 cursor-pointer">
                             Back to Shop
                         </Link>
                     </div>
